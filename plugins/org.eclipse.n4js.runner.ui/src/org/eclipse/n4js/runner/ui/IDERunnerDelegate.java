@@ -11,6 +11,7 @@
 package org.eclipse.n4js.runner.ui;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
@@ -19,6 +20,7 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
+import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.n4js.runner.RunConfiguration;
@@ -65,11 +67,18 @@ public abstract class IDERunnerDelegate implements ILaunchConfigurationDelegate 
 		}
 
 		try {
-			HashMap<String, String> attributes = new HashMap<>(1);
+			Map<String, String> attributes = new HashMap<>(1);
 			attributes.put(IProcess.ATTR_PROCESS_TYPE, N4JS_PROCESS_TYPE);
-			DebugPlugin.newProcess(launch, runnerFrontEndUI.runInUI(runConfig),
-					launch.getLaunchConfiguration().getName(), attributes);
 
+			if (mode.equals(ILaunchManager.DEBUG_MODE)) {
+				// TODO start Process with Debugger N4JSDebugTarget
+				// launch.addDebugTarget(new N4JSDebugTarget(runnerFrontEndUI.runInUI(runConfig), launch));
+				DebugPlugin.newProcess(launch, runnerFrontEndUI.runInUI(runConfig),
+						launch.getLaunchConfiguration().getName(), attributes);
+			} else {
+				DebugPlugin.newProcess(launch, runnerFrontEndUI.runInUI(runConfig),
+						launch.getLaunchConfiguration().getName(), attributes);
+			}
 		} catch (Exception e) {
 			LOGGER.error("Error occurred while trying to execute module.", e);
 			if (e instanceof CoreException) {
