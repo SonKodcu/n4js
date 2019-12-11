@@ -18,7 +18,7 @@ Contributors:
             delegateDescription="Runs given selection with Node.js runner"
             delegateName="Node.js Runner Launch Configuration Delegate"
             id="org.eclipse.n4js.runner.nodejs.ui.launchConfigurationType"
-            modes="run"
+            modes="run, debug"
             name="Node.js Runner">
       </launchConfigurationType>
    </extension>
@@ -37,7 +37,7 @@ Contributors:
             icon="icons/icon_runner_nodejs.png"
             id="org.eclipse.n4js.runner.nodejs.ui.LaunchShortcut"
             label="Launch in Node.js"
-            modes="run">
+            modes="run, debug">
          <configurationType
                id="org.eclipse.n4js.runner.nodejs.ui.launchConfigurationType">
          </configurationType>
