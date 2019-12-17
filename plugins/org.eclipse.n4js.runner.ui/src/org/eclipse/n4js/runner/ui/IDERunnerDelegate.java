@@ -73,8 +73,11 @@ public abstract class IDERunnerDelegate implements ILaunchConfigurationDelegate 
 			if (mode.equals(ILaunchManager.DEBUG_MODE)) {
 				// TODO start Process with Debugger N4JSDebugTarget
 				// launch.addDebugTarget(new N4JSDebugTarget(runnerFrontEndUI.runInUI(runConfig), launch));
+				new org.eclipse.wildwebdeveloper.debug.node.NodeRunDAPDebugDelegate().launch(configuration, mode, launch, monitor);
+				/*
 				DebugPlugin.newProcess(launch, runnerFrontEndUI.runInUI(runConfig),
 						launch.getLaunchConfiguration().getName(), attributes);
+				*/
 			} else {
 				DebugPlugin.newProcess(launch, runnerFrontEndUI.runInUI(runConfig),
 						launch.getLaunchConfiguration().getName(), attributes);
