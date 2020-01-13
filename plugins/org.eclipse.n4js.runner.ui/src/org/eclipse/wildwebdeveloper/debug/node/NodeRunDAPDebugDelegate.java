@@ -85,10 +85,10 @@ public class NodeRunDAPDebugDelegate extends DSPLaunchDelegate {
 //			URL fileURL = FileLocator.toFileURL(
 //					getClass().getResource("/language-servers/node_modules/node-debug2/out/src/nodeDebug.js"));
 //			File file = new File(fileURL.getPath());
-//			List<String> debugCmdArgs = Collections.singletonList(file.getAbsolutePath());
+			File file = new File("YOUR\\PATH\\TO\\language-servers\\node_modules\\node-debug2\\out\\src\\nodeDebug.js");
+			List<String> debugCmdArgs = Collections.singletonList(file.getAbsolutePath());
 			//TODO: Path to debug adapter.
-			List<String> debugCmdArgs = Collections.singletonList("D:\\Path\\to\\your\\language-servers\\node_modules\\node-debug2\\out\\src\\nodeDebug.js");
-
+//			List<String> debugCmdArgs = Collections.singletonList("YOUR\\PATH\\TO\\language-servers\\node_modules\\node-debug2\\out\\src\\nodeDebug.js");
 			DSPLaunchDelegateLaunchBuilder builder = new DSPLaunchDelegateLaunchBuilder(configuration, mode, launch,
 					monitor);
 			builder.setLaunchDebugAdapter(InitializeLaunchConfigurations.getNodeJsLocation(), debugCmdArgs);
